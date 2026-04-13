@@ -2,7 +2,7 @@ import os
 import json
 import io
 import pandas as pd
-import pyodbc
+import pymssql
 import google.generativeai as genai
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, StreamingResponse, JSONResponse
@@ -20,22 +20,21 @@ templates = Jinja2Templates(directory="templates")
 genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
 model = genai.GenerativeModel("gemini-1.5-flash")
 
-# DB connection string
-DB_CONN = (
-    f"DRIVER={{ODBC Driver 17 for SQL Server}};"
-    f"SERVER={os.getenv('DB_SERVER')};"
-    f"DATABASE={os.getenv('DB_NAME')};"
-    f"UID={os.getenv('DB_USER')};"
-    f"PWD={os.getenv('DB_PASSWORD')};"
-    f"TrustServerCertificate=yes;"
-)
-
 # Schema cache
 _schema_cache: dict = {}
 
 
 def get_db_connection():
-    return pyodbc.connect(DB_CONN, timeout=10)
+    server = os.getenv("DB_SERVER", "163.17.141.61:8000").replace(",", ":")
+    host, port = server.rsplit(":", 1)
+    return pymssql.connect(
+        server=host,
+        port=int(port),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD", ""),
+        database=os.getenv("DB_NAME"),
+        timeout=10,
+    )
 
 
 def load_schema() -> dict:
