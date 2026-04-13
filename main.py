@@ -65,13 +65,17 @@ def load_schema() -> dict:
         """)
         rows = cursor.fetchall()
         for row in rows:
-            tbl = row.table_name
+            tbl = row[0]       # table_name
+            type_desc = row[1] # type_desc
+            col_name = row[2]  # column_name
+            data_type = row[3] # data_type
+            nullable = row[5]  # is_nullable
             if tbl not in schema:
-                schema[tbl] = {"type": row.type_desc, "columns": []}
+                schema[tbl] = {"type": type_desc, "columns": []}
             schema[tbl]["columns"].append({
-                "name": row.column_name,
-                "type": row.data_type,
-                "nullable": row.is_nullable
+                "name": col_name,
+                "type": data_type,
+                "nullable": nullable
             })
         conn.close()
     except Exception as e:
