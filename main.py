@@ -16,8 +16,8 @@ app = FastAPI(title="Gemio ERP 自然語言查詢")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Anthropic Claude setup
-claude = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
+# Anthropic Claude setup (auto-reads ANTHROPIC_API_KEY env var)
+claude = anthropic.Anthropic()
 
 # Schema cache
 _schema_cache: dict = {}
