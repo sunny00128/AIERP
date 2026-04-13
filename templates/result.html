@@ -1,0 +1,97 @@
+{% if error %}
+<!-- Error Card -->
+<div class="card border-danger">
+  <div class="card-header bg-danger text-white">
+    <i class="bi bi-exclamation-triangle me-2"></i>查詢失敗
+  </div>
+  <div class="card-body">
+    <p class="mb-2 text-muted small">問題：{{ question }}</p>
+    <pre class="bg-light p-3 rounded text-danger mb-0" style="white-space:pre-wrap;word-break:break-all;">{{ error }}</pre>
+    {% if sql %}
+    <hr/>
+    <p class="small fw-semibold mb-1 text-secondary">產生的 SQL（供參考）：</p>
+    <pre class="bg-dark text-success p-3 rounded mb-0" style="font-size:.85rem;white-space:pre-wrap;">{{ sql }}</pre>
+    {% endif %}
+  </div>
+</div>
+
+{% else %}
+
+<!-- 3. 查詢結果 -->
+<div class="card mb-4">
+  <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+    <span><i class="bi bi-table me-2"></i>查詢結果
+      {% if rows %}<span class="badge bg-white text-success ms-2">{{ rows | length }} 筆</span>{% endif %}
+    </span>
+    {% if rows %}
+    <form method="post" action="/export" target="_blank">
+      <input type="hidden" name="columns" id="export-columns"
+             value="{{ columns | tojson | forceescape }}" />
+      <input type="hidden" name="rows" id="export-rows"
+             value="{{ rows | tojson | forceescape }}" />
+      <button type="submit" class="btn btn-sm btn-light text-success fw-semibold">
+        <i class="bi bi-file-earmark-excel me-1"></i>匯出 Excel
+      </button>
+    </form>
+    {% endif %}
+  </div>
+  <div class="card-body p-0">
+    {% if rows %}
+    <div class="table-responsive">
+      <table class="table table-striped table-hover table-bordered mb-0" style="font-size:.9rem;">
+        <thead class="table-dark">
+          <tr>
+            {% for col in columns %}
+            <th>{{ col }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+          {% for row in rows %}
+          <tr>
+            {% for cell in row %}
+            <td>{{ cell }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+        {% if numeric_cols %}
+        <tfoot class="table-warning fw-bold">
+          <tr>
+            {% for i in range(columns | length) %}
+              {% if i in numeric_cols %}
+                {% set col_sum = namespace(val=0) %}
+                {% for row in rows %}
+                  {% set col_sum.val = col_sum.val + (row[i] | float) %}
+                {% endfor %}
+                <td class="text-end">{{ col_sum.val | round(2) }}</td>
+              {% elif i == 0 %}
+                <td class="text-muted">小計</td>
+              {% else %}
+                <td></td>
+              {% endif %}
+            {% endfor %}
+          </tr>
+        </tfoot>
+        {% endif %}
+      </table>
+    </div>
+    {% else %}
+    <div class="text-center text-muted py-4">
+      <i class="bi bi-inbox fs-2 d-block mb-2 opacity-50"></i>查無資料
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+<!-- 4. SQL 語句 -->
+<div class="card">
+  <div class="card-header bg-dark text-white">
+    <i class="bi bi-code-slash me-2"></i>產生的 SQL 語句
+  </div>
+  <div class="card-body p-0">
+    <pre class="bg-dark text-success p-3 mb-0 rounded-bottom" style="font-size:.88rem;white-space:pre-wrap;border-radius:0 0 .75rem .75rem !important;">{{ sql }}</pre>
+  </div>
+</div>
+
+{% endif %}
