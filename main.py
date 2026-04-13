@@ -2,7 +2,7 @@ import os
 import json
 import io
 import pandas as pd
-import pymssql
+import pytds
 import google.generativeai as genai
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, StreamingResponse, JSONResponse
@@ -25,10 +25,10 @@ _schema_cache: dict = {}
 
 
 def get_db_connection():
-    server = os.getenv("DB_SERVER", "163.17.141.61:8000").replace(",", ":")
+    server = os.getenv("DB_SERVER", "163.17.141.61,8000").replace(",", ":")
     host, port = server.rsplit(":", 1)
-    return pymssql.connect(
-        server=host,
+    return pytds.connect(
+        dsn=host,
         port=int(port),
         user=os.getenv("DB_USER"),
         password=os.getenv("DB_PASSWORD", ""),
