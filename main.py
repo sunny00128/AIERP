@@ -3,7 +3,7 @@ import json
 import io
 import pandas as pd
 import pytds
-import google.generativeai as genai
+import anthropic
 from fastapi import FastAPI, Request, Form
 from fastapi.responses import HTMLResponse, StreamingResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
@@ -16,9 +16,8 @@ app = FastAPI(title="Gemio ERP 自然語言查詢")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
-# Gemini setup
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
-model = genai.GenerativeModel("gemini-2.0-flash")
+# Anthropic Claude setup
+claude = anthropic.Anthropic(api_key=os.getenv("ANTHROPIC_API_KEY"))
 
 # Schema cache
 _schema_cache: dict = {}
@@ -96,7 +95,7 @@ def schema_to_prompt(schema: dict) -> str:
 
 
 def nl_to_sql(question: str, schema: dict) -> str:
-    """Use Gemini to convert natural language to SQL."""
+    """Use Claude to convert natural language to SQL."""
     schema_text = schema_to_prompt(schema)
     prompt = f"""你是一位 SQL Server 專家。請根據以下資料庫 schema，將使用者的問題轉換成正確的 T-SQL 查詢語句。
 
@@ -115,8 +114,12 @@ def nl_to_sql(question: str, schema: dict) -> str:
 
 SQL:"""
 
-    response = model.generate_content(prompt)
-    sql = response.text.strip()
+    response = claude.messages.create(
+        model="claude-haiku-4-5-20251001",
+        max_tokens=1024,
+        messages=[{"role": "user", "content": prompt}]
+    )
+    sql = response.content[0].text.strip()
     # Clean up markdown code blocks if present
     if sql.startswith("```"):
         lines = sql.split("\n")
