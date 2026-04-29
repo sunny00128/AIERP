@@ -1,5 +1,14 @@
 import os
+import sys
 import io
+
+# Streamlit Cloud 的 Linux 環境預設 ASCII，強制改為 UTF-8
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
+os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
+
 import pandas as pd
 import pytds
 import anthropic
