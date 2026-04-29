@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>AI 投資行為專業診斷報告 - 中</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap');
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #334155; max-width: 960px; margin: 0 auto; padding: 50px 25px; background: #f8fafc; -webkit-font-smoothing: antialiased; }
+        .report-header { text-align: center; margin-bottom: 45px; background: #4f46e5; color: white; padding: 75px 50px; border-radius: 45px; box-shadow: 0 25px 40px -10px rgba(79, 70, 229, 0.3); position: relative; overflow: hidden; }
+        .report-header h1 { margin: 0; font-size: 3.2em; font-weight: 900; letter-spacing: -0.04em; line-height: 1.1; margin-bottom: 10px; }
+        .report-header p { font-weight: 600; color: #c7d2fe; text-transform: uppercase; letter-spacing: 0.3em; font-size: 0.85em; }
+        .summary-stats { display: flex; justify-content: center; gap: 35px; margin-top: 40px; }
+        .stat-box { background: rgba(255,255,255,0.12); padding: 20px 40px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.2); backdrop-filter: blur(12px); }
+        .stat-label { font-size: 0.8em; font-weight: 800; color: #e0e7ff; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px; }
+        .stat-value { font-size: 1.6em; font-weight: 900; color: white; }
+        .blind-spot-card { background: #0f172a; color: white; padding: 55px; border-radius: 45px; box-shadow: 0 20px 50px rgba(15, 23, 42, 0.2); margin-bottom: 50px; }
+        .blind-spot-title { font-size: 2.2em; font-weight: 900; margin-bottom: 20px; color: #ffffff; }
+        .tip-grid { display: grid; grid-template-cols: 1fr 1fr; gap: 20px; }
+        .tip-item { background: rgba(255,255,255,0.04); padding: 24px; border-radius: 24px; border: 1px solid rgba(255,255,255,0.08); font-size: 0.95em; font-weight: 600; }
+        .warning-box { background: #fffbeb; border: 3px solid #fde68a; padding: 40px; border-radius: 40px; margin-bottom: 60px; }
+        .warning-text { color: #78350f; font-size: 1.4em; font-weight: 800; line-height: 1.4; font-style: italic; }
+        footer { text-align: center; color: #94a3b8; font-size: 0.9em; margin-top: 80px; padding-bottom: 60px; border-top: 1px solid #e2e8f0; padding-top: 40px; }
+    </style>
+</head>
+<body>
+    <div class="report-header">
+        <p>AI BEHAVIORAL RISK LAB</p>
+        <h1>「您是兼具理性分析能力與『贏家心理帳戶』傾向的混合型投資者，在獲利時容易過度擴張風險。」</h1>
+        <div class="summary-stats">
+            <div class="stat-box">
+                <div class="stat-label">風險承受度</div>
+                <div class="stat-value">中</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">核心偏誤</div>
+                <div class="stat-value">心理帳戶與追高偏誤 (House Money Effect & FOMO)</div>
+            </div>
+        </div>
+    </div>
+    <div class="blind-spot-card">
+        <div class="blind-spot-title">💡 投資盲點：贏家的雙重標準</div>
+        <p style="color: #94a3b8; font-size: 1.15em; line-height: 1.8; margin-bottom: 40px;">您傾向將『辛苦賺來的本金』與『市場贏來的獲利』分開看待。這導致您在本金運用上謹慎審慎，但在獲利後卻會因『心理帳戶』偏誤而進行高風險賭博（如高槓桿或盲目追高），這會侵蝕長期複利的效果。</p>
+        <div style="font-size: 0.85em; color: #6366f1; font-weight: 900; text-transform: uppercase; letter-spacing: 0.25em; margin-bottom: 25px;">行為對抗建議戰術 (4 Points)</div>
+        <div class="tip-grid">
+            <div class="tip-item">強制合併帳戶觀念：將所有獲利視同本金，要求每一筆再投資都必須經過與初始投資相同的審核流程。</div><div class="tip-item">冷卻期策略：在大型獲利或市場大漲當天禁止進行任何新交易，強迫心理恢復理性。</div><div class="tip-item">自動化避險：針對信心度低的保護性措施，改由系統或定期定額策略執行，而非依賴當下的主觀意志。</div><div class="tip-item">紀錄 FOMO 代價：回溯過去追高買入的歷史績效，用真實數據對抗『不想錯過』的幻覺。</div>
+        </div>
+    </div>
+    <div class="warning-box">
+        <div style="color: #92400e; font-size: 1.2em; font-weight: 900; margin-bottom: 15px;">⚠️ 行為風險紅線提醒</div>
+        <div class="warning-text">「請高度警惕在獲利後的自我膨脹感，高信心的衝動決策往往是導致獲利回吐的主因。」</div>
+    </div>
+    <div style="margin-top: 80px; margin-bottom: 60px;">
+        <div style="font-size: 1.4em; font-weight: 900; color: #0f172a; margin-bottom: 30px;">決策原始路徑紀錄</div>
+        
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 1 | 市場大跌 (Loss Aversion)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你持有的主力股票在三天內無預警下跌了 15%，新聞媒體充斥著負面報導，且跌勢似乎還沒結束。你會怎麼做？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">維持不動。雖然心理不安，但告訴自己這是長期投資的一部分。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">中風險承受 / 理性觀察</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">5/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 2 | 朋友推薦 (Herd Mentality)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">一位在股市賺了不少錢的朋友推薦你一個「剛起步、保證翻倍」的冷門投資項目，且很多人都在討論。你會？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">花幾天時間查資料研究，確定風險後才考慮小額嘗試。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">中風險承受 / 理性審慎</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">9/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 3 | 獲利回吐 (Disposition Effect)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你的投資部位曾獲利 50%，但近一個月回調至僅剩 10% 獲利。你當下的感受是？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">雖然可惜，但 10% 仍是正報酬，按原定計畫檢視是否出場。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">中風險承受 / 理性獲利</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">9/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 4 | 錯過行情 (Regret Aversion)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你研究很久的一支股票突然暴漲 20%，你之前因為猶豫沒買到。現在你會？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">不等回檔直接衝進去，不想再看著它漲。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">高風險承受 / 追高偏誤</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;'>決策信心度: <span style="color:#4f46e5">9/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 5 | 意外之財 (Mental Accounting)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你意外抽中一筆相當於兩個月薪水的獎金，你會如何處置這筆錢？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">這是多賺的，拿去買高槓桿衍生品，虧了也不心疼。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">高風險承受 / 心理帳戶偏誤</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">9/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 6 | 新聞噪音 (Availability Heuristic)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">最近幾天新聞瘋狂報導「金融海嘯即將來臨」，儘管你的投資目前還是賺錢的。你會？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">買進一些反向/避險工具，雖然可能會增加成本。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">中風險承受 / 風險對沖理性</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">2/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 7 | 長期不漲 (Status Quo)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你投資一個穩健的基金已經一年，績效完全沒變動，但同期大盤漲了 10%。你會？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">重新評估該基金的經理人與策略是否失效，失效則換掉。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">中風險承受 / 動態調整理性</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">9/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 8 | 大賺之後 (Hot Hand Fallacy)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你最近連續三次投資都賺了超過 20%，你感覺自己找到了「財富密碼」。你的下一步是？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">開始向朋友炫耀並開班授課（即使非專業）。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">高風險承受 / 社交自我膨脹</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">5/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 9 | 資訊過載 (Complexity Bias)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你面對一份 50 頁的財報和各種複雜的指標，你看不太懂但很多人說這是好股。你會？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">花錢請教專業人士解釋，再做決定。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">中風險承受 / 外部決策理性</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">5/10</span></div>
+          </div>
+        </div>
+      </div>
+    
+      <div style="margin-bottom: 24px; padding: 28px; border-left: 6px solid #4f46e5; background: #ffffff; border-radius: 20px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); border-right: 1px solid #f1f5f9; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+        <div style="font-size: 0.75em; color: #4f46e5; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 10px; display: flex; align-items: center; gap: 8px;">
+          <span style="display:inline-block; width:12px; height:12px; background:#4f46e5; border-radius:3px;"></span>
+          情境測試 10 | 分散風險 (Naïve Diversification)
+        </div>
+        <div style="font-weight: 700; color: #1e293b; margin-bottom: 16px; font-size: 1.15em; line-height: 1.6;">你有 100 萬，但不知道選哪支股票。你會？</div>
+        <div style="background: #f8fafc; padding: 20px; border-radius: 16px; border: 1px solid #e2e8f0;">
+          <div style="font-size: 0.8em; color: #64748b; font-weight: 700; margin-bottom: 6px; text-transform: uppercase;">您的決策</div>
+          <div style="color: #0f172a; font-weight: 800; font-size: 1.05em; margin-bottom: 14px;">購買追蹤指數的 ETF，以獲取平均市場報酬。</div>
+          <div style="display: flex; align-items: center; gap: 15px; border-top: 1px solid #e2e8f0; pt: 12px; margin-top: 12px; padding-top: 12px;">
+            <div style="background: #4f46e5; color: white; font-size: 0.7em; font-weight: 900; padding: 5px 12px; border-radius: 99px; box-shadow: 0 2px 4px rgba(79, 70, 229, 0.2);">中風險承受 / 效率市場理性</div>
+            <div style="font-size: 0.8em; color: #64748b; font-weight: 700;">決策信心度: <span style="color:#4f46e5">5/10</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+        <div style="font-weight: 900; color: #4f46e5; margin-bottom: 12px; letter-spacing: 0.4em;">AI BEHAVIORAL RISK LAB</div>
+        &copy; 2024 Behavioral Risk diagnostic. All Rights Reserved.
+    </footer>
+</body>
+</html>
