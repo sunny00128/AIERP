@@ -1,13 +1,16 @@
 import os
 import sys
 import io
+import locale
 
-# Streamlit Cloud 的 Linux 環境預設 ASCII，強制改為 UTF-8
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8', errors='replace')
-if hasattr(sys.stderr, 'reconfigure'):
-    sys.stderr.reconfigure(encoding='utf-8', errors='replace')
-os.environ.setdefault('PYTHONIOENCODING', 'utf-8')
+# 修正 Linux 環境 ASCII codec 問題（勿動 sys.stdout，會干擾 Streamlit）
+try:
+    locale.setlocale(locale.LC_ALL, 'C.UTF-8')
+except locale.Error:
+    try:
+        locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
+    except locale.Error:
+        pass
 
 import pandas as pd
 import pytds
@@ -80,24 +83,30 @@ def nl_to_sql(question: str, schema: dict) -> str:
         f"  {tbl}: " + ", ".join(f"{c['name']} ({c['type']})" for c in info["columns"])
         for tbl, info in schema.items()
     )
-    prompt = f"""你是一位 SQL Server 專家。請根據以下資料庫 schema，將使用者的問題轉換成正確的 T-SQL 查詢語句。
+    prompt = (
+        "你是一位 SQL Server 專家。請根據以下資料庫 schema，"
+        "將使用者的問題轉換成正確的 T-SQL 查詢語句。\n\n"
+        "資料庫: gemio\n"
+        "可用的資料表/檢視表:\n"
+        f"{schema_text}\n\n"
+        "規則:\n"
+        "1. 只回傳 SQL 語句，不要任何解釋或 markdown 標記\n"
+        "2. 使用繁體中文欄位名稱（schema 中有的）\n"
+        "3. 盡量使用檢視表（VIEW），避免直接查原始資料表\n"
+        "4. 不要使用 DROP、DELETE、UPDATE、INSERT 等修改指令\n"
+        "5. 若無法回答，回傳: SELECT '無法轉換此查詢' AS 訊息\n\n"
+        f"使用者問題: {question}\n\n"
+        "SQL:"
+    )
 
-資料庫: gemio
-可用的資料表/檢視表:
-{schema_text}
+    # 確保 prompt 是乾淨的 UTF-8 字串
+    prompt = prompt.encode("utf-8", errors="replace").decode("utf-8")
 
-規則:
-1. 只回傳 SQL 語句，不要任何解釋或 markdown 標記
-2. 使用繁體中文欄位名稱（schema 中有的）
-3. 盡量使用檢視表（VIEW），避免直接查原始資料表
-4. 不要使用 DROP、DELETE、UPDATE、INSERT 等修改指令
-5. 若無法回答，回傳: SELECT '無法轉換此查詢' AS 訊息
-
-使用者問題: {question}
-
-SQL:"""
-
-    client = anthropic.Anthropic(api_key=_secret("ANTHROPIC_API_KEY"))
+    api_key = _secret("ANTHROPIC_API_KEY")
+    client = anthropic.Anthropic(
+        api_key=api_key,
+        http_client=None,
+    )
     resp = client.messages.create(
         model="claude-haiku-4-5-20251001",
         max_tokens=1024,
@@ -116,7 +125,7 @@ def to_excel(df: pd.DataFrame) -> bytes:
     return buf.getvalue()
 
 
-# ─── 主介面（啟動時不連 DB）────────────────────────────────────────────────────
+# ─── 主介面 ──────────────────────────────────────────────────────────────────
 
 st.title("🔍 Gemio ERP 自然語言查詢")
 st.caption("Powered by Claude AI — 用中文問問題，自動轉換為 SQL 查詢")
@@ -128,7 +137,6 @@ question = st.text_input(
 
 if st.button("🔍 查詢", type="primary", disabled=not question):
 
-    # 步驟 1：載入 schema
     with st.spinner("載入資料庫結構…"):
         try:
             schema = load_schema()
@@ -139,7 +147,6 @@ if st.button("🔍 查詢", type="primary", disabled=not question):
     with st.expander(f"📋 可查詢的資料表／檢視表（共 {len(schema)} 個）"):
         st.write("、".join(schema.keys()))
 
-    # 步驟 2：AI 轉 SQL
     with st.spinner("AI 分析中…"):
         try:
             sql = nl_to_sql(question, schema)
@@ -150,7 +157,6 @@ if st.button("🔍 查詢", type="primary", disabled=not question):
     st.subheader("產生的 SQL")
     st.code(sql, language="sql")
 
-    # 步驟 3：執行 SQL
     with st.spinner("執行查詢…"):
         try:
             cols, rows = execute_sql(sql)
